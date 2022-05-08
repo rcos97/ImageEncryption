@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="md">
+      <UniqueIdentifier>{c8db3f11-4a30-4b7c-8236-f09b947310fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="md\chapter1置乱加密">
+      <UniqueIdentifier>{2af11319-a87a-421a-8659-676b0ff82166}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -23,5 +29,8 @@
     <Image Include="resource\690x690.jpg">
       <Filter>资源文件</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" />
   </ItemGroup>
 </Project>
