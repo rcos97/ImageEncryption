@@ -141,12 +141,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="RGBShiftEncryp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resource\690x690.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="RGB平移置乱加密.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="RGBShiftEncryp.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

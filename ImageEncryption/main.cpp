@@ -6,6 +6,7 @@
 #include <iostream>
 #include <Dense>
 #include <math.h>
+#include "RGBShiftEncryp.h"
 using namespace cv;
 using namespace std;
 
