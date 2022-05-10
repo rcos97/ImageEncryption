@@ -18,95 +18,93 @@ RGBShiftEncryp::~RGBShiftEncryp()
 }
 
 
-cv::Mat RGBShiftEncryp::horizongtalShift(Color c)
+cv::Mat RGBShiftEncryp::horizongtalShift(myEnum::Color c)
 {
-	int color = -1;
-	switch (c)
-	{
-	case RGBShiftEncryp::Color::RED:
-		color = 0;
-		break;
-	case RGBShiftEncryp::Color::GREEN:
-		color = 1;
-		break;
-	case RGBShiftEncryp::Color::BLUE:
-		color = 2;
-		break;
-	default:
-		break;
-	}
+	int color = myEnum::getColorNum(c);
 	cv::Mat resultImg(height, width, (this->img).type());
 	int offset = ik[color];
 	int deltaOffset = dk[color];
 	for (int j = 0; j < height; j++) {
 		for (int i = 0; i < width; i++) {
 			//每行的RGB分量进水平平移（第j行）
-			int u = (i + offset)%width;
+			int u = myTools::mod(i + offset, width);
 			//opencv使用的是BGR，用户传的是RGB,因此用户传的RGB(012)映射到BGR(210)
 			//opencv先传行(y)，再传列(x)
 			resultImg.at<cv::Vec3b>(j, u)[2 - color] = (this->img).at<cv::Vec3b>(j, i)[2 - color];
 		}
-		offset = (offset + deltaOffset) % width;
+		offset = myTools::mod(offset + deltaOffset, width);
 	}
 	std::vector<cv::Mat> mv;
 	cv::split(resultImg, mv);
+	cv::merge(mv, this->img);
 	return mv[2 - color];
 }
 
-cv::Mat RGBShiftEncryp::verticalShift(Color c)
+cv::Mat RGBShiftEncryp::verticalShift(myEnum::Color c)
 {
-	int color = -1;
-	switch (c)
-	{
-	case RGBShiftEncryp::Color::RED:
-		color = 0;
-		break;
-	case RGBShiftEncryp::Color::GREEN:
-		color = 1;
-		break;
-	case RGBShiftEncryp::Color::BLUE:
-		color = 2;
-		break;
-	default:
-		break;
-	}
+	int color = myEnum::getColorNum(c);
 	cv::Mat resultImg(height,width,(this->img).type());
 	int offset = ik[color];
 	int deltaOffset = dk[color];
 	for (int i = 0; i < width; i++) {
 		for (int j = 0; j < height; j++) {
 			//每列的RGB分量进垂直平移（第i列）
-			int u = (j + offset) % height;
+			int u = myTools::mod(j + offset, height);
 			resultImg.at<cv::Vec3b>(u,i)[2 - color] = (this->img).at<cv::Vec3b>(j, i)[2 - color];
 		}
-		offset = (offset + deltaOffset) % height;
+		offset = myTools::mod(offset + deltaOffset, height);
 	}
 	std::vector<cv::Mat> mv;
 	cv::split(resultImg, mv);
+	cv::merge(mv, this->img);
 	return mv[2-color];
 }
 
-cv::Mat RGBShiftEncryp::RGBShiftEnc(Color c)
+cv::Mat RGBShiftEncryp::horizongtalDeShift(myEnum::Color c)
 {
-	int color = -1;
-	switch (c)
-	{
-	case RGBShiftEncryp::Color::RED:
-		color = 0;
-		break;
-	case RGBShiftEncryp::Color::GREEN:
-		color = 1;
-		break;
-	case RGBShiftEncryp::Color::BLUE:
-		color = 2;
-		break;
-	default:
-		break;
+	int color = myEnum::getColorNum(c);
+	cv::Mat resultImg(height, width, (this->img).type());
+	int offset = ik[color];
+	int deltaOffset = dk[color];
+	for (int j = 0; j < height; j++) {
+		for (int i = 0; i < width; i++) {
+			int u = myTools::mod(i + offset, width);
+			//这里的this->img 已经被打乱了
+			resultImg.at<cv::Vec3b>(j, i)[2 - color] = (this->img).at<cv::Vec3b>(j, u)[2 - color];
+		}
+		offset = myTools::mod(offset + deltaOffset, width);
 	}
 	std::vector<cv::Mat> mv;
+	cv::split(resultImg, mv);
+	cv::merge(mv, this->img);
+	return mv[2 - color];
+}
+
+cv::Mat RGBShiftEncryp::verticalDeShift(myEnum::Color c)
+{
+	int color = myEnum::getColorNum(c);
+	cv::Mat resultImg(height, width, (this->img).type());
+	int offset = ik[color];
+	int deltaOffset = dk[color];
+	for (int i = 0; i < width; i++) {
+		for (int j = 0; j < height; j++) {
+			int u = myTools::mod(j + offset, height);
+			resultImg.at<cv::Vec3b>(j, i)[2 - color] = (this->img).at<cv::Vec3b>(u, i)[2 - color];
+		}
+		offset = myTools::mod(offset + deltaOffset, height);
+	}
+	std::vector<cv::Mat> mv;
+	cv::split(resultImg, mv);
+	cv::merge(mv, this->img);
+	return mv[2 - color];
+}
+
+cv::Mat RGBShiftEncryp::RGBShiftEnc(myEnum::Color c, int len)
+{
+	int color = myEnum::getColorNum(c);
+	std::vector<cv::Mat> mv;
 	cv::split(this->img, mv);
-	for (int i = 0; i < 14; i++) {
-		std::cout << i << std:: endl;
+	for (int i = 0; i < len; i++) {
 		if (ck[i] == 1) {
 			mv[2 - color] = horizongtalShift(c);
 		}
@@ -114,7 +112,26 @@ cv::Mat RGBShiftEncryp::RGBShiftEnc(Color c)
 			mv[2 - color] = verticalShift(c);
 		}
 	}
+	cv::merge(mv, this->img);
 	return mv[2-color];
+}
+
+cv::Mat RGBShiftEncryp::RGBShiftDeEnc(myEnum::Color c, int len)
+{
+	int color = myEnum::getColorNum(c);
+	std::vector<cv::Mat> mv;
+	cv::split(this->img, mv);
+	for (int i = 0; i < len; i++) {
+		std::cout << i << std::endl;
+		if (ck[len- 1 - i] == 1) {
+			mv[2 - color] = horizongtalDeShift(c);
+		}
+		else {
+			mv[2 - color] = verticalDeShift(c);
+		}
+	}
+	cv::merge(mv, this->img);
+	return mv[2 - color];
 }
 
 

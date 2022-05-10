@@ -141,6 +141,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="myEnum.cpp" />
+    <ClCompile Include="myTools.cpp" />
     <ClCompile Include="RGBShiftEncryp.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -153,6 +155,8 @@
     <Text Include="RGB平移置乱加密.md" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="myEnum.h" />
+    <ClInclude Include="myTools.h" />
     <ClInclude Include="RGBShiftEncryp.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

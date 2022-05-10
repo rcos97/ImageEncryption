@@ -27,6 +27,12 @@
     <ClCompile Include="RGBShiftEncryp.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="myEnum.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="myTools.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="resource\690x690.jpg">
@@ -43,6 +49,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RGBShiftEncryp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="myEnum.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="myTools.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
