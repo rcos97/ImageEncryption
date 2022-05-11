@@ -1,18 +1,14 @@
 #include "RGBShiftEncryp.h"
 
-RGBShiftEncryp::RGBShiftEncryp(cv::Mat img, int ck[], int ik[], int dk[])
+RGBShiftEncryp::RGBShiftEncryp(cv::Mat img, std::vector<int> ck, int ik[], int dk[]):ImgBase(img)
 {
-	this->img = img;
 	this->ck = ck;
 	this->ik = ik;
 	this->dk = dk;
-	this->width = img.cols;
-	this->height = img.rows;
 }
 
 RGBShiftEncryp::~RGBShiftEncryp()
 {
-	delete[] this->ck;
 	delete[] this->ik;
 	delete[] this->dk;
 }
@@ -99,12 +95,12 @@ cv::Mat RGBShiftEncryp::verticalDeShift(myEnum::Color c)
 	return mv[2 - color];
 }
 
-cv::Mat RGBShiftEncryp::RGBShiftEnc(myEnum::Color c, int len)
+cv::Mat RGBShiftEncryp::RGBShiftEnc(myEnum::Color c)
 {
 	int color = myEnum::getColorNum(c);
 	std::vector<cv::Mat> mv;
 	cv::split(this->img, mv);
-	for (int i = 0; i < len; i++) {
+	for (int i = 0; i < ck.size(); i++) {
 		if (ck[i] == 1) {
 			mv[2 - color] = horizongtalShift(c);
 		}
@@ -116,14 +112,14 @@ cv::Mat RGBShiftEncryp::RGBShiftEnc(myEnum::Color c, int len)
 	return mv[2-color];
 }
 
-cv::Mat RGBShiftEncryp::RGBShiftDeEnc(myEnum::Color c, int len)
+cv::Mat RGBShiftEncryp::RGBShiftDeEnc(myEnum::Color c)
 {
 	int color = myEnum::getColorNum(c);
 	std::vector<cv::Mat> mv;
 	cv::split(this->img, mv);
-	for (int i = 0; i < len; i++) {
+	for (int i = 0; i < ck.size(); i++) {
 		std::cout << i << std::endl;
-		if (ck[len- 1 - i] == 1) {
+		if (ck[ck.size() - 1 - i] == 1) {
 			mv[2 - color] = horizongtalDeShift(c);
 		}
 		else {
@@ -132,6 +128,30 @@ cv::Mat RGBShiftEncryp::RGBShiftDeEnc(myEnum::Color c, int len)
 	}
 	cv::merge(mv, this->img);
 	return mv[2 - color];
+}
+
+cv::Mat RGBShiftEncryp::RGBShiftEnc3C()
+{
+	std::vector<cv::Mat> mv;
+	split(this->img, mv);
+	mv[2] = RGBShiftEnc(myEnum::Color::RED);
+	mv[1] = RGBShiftEnc(myEnum::Color::GREEN);
+	mv[0] = RGBShiftEnc(myEnum::Color::BLUE);
+	cv::Mat dst;
+	cv::merge(mv, dst);
+	return dst;
+}
+
+cv::Mat RGBShiftEncryp::RGBShiftDeEnc3C()
+{
+	std::vector<cv::Mat> mv;
+	split(this->img, mv);
+	mv[2] = RGBShiftDeEnc(myEnum::Color::RED);
+	mv[1] = RGBShiftDeEnc(myEnum::Color::GREEN);
+	mv[0] = RGBShiftDeEnc(myEnum::Color::BLUE);
+	cv::Mat dst;
+	cv::merge(mv, dst);
+	return dst;
 }
 
 

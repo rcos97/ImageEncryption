@@ -6,7 +6,11 @@ int myTools::mod(int x, int y)
         return x % y;
     }
     if (x < 0 && y > 0) {
-        return y - (x % y);
+        int result = y - (-x % y);
+        if (result == y) {
+            result = 0;
+        }
+        return result;
     }
     return 0;
 }

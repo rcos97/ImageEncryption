@@ -33,9 +33,15 @@
     <ClCompile Include="myTools.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="ImgBase.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="resource\690x690.jpg">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="resource\690X435.jpg">
       <Filter>资源文件</Filter>
     </Image>
   </ItemGroup>
@@ -55,6 +61,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="myTools.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImgBase.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

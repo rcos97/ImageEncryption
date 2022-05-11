@@ -140,12 +140,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ImgBase.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="myEnum.cpp" />
     <ClCompile Include="myTools.cpp" />
     <ClCompile Include="RGBShiftEncryp.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="resource\690X435.jpg" />
     <Image Include="resource\690x690.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -155,6 +157,7 @@
     <Text Include="RGB平移置乱加密.md" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ImgBase.h" />
     <ClInclude Include="myEnum.h" />
     <ClInclude Include="myTools.h" />
     <ClInclude Include="RGBShiftEncryp.h" />

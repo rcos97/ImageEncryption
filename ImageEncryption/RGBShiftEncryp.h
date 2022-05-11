@@ -2,7 +2,9 @@
 #include <opencv2/opencv.hpp>
 #include "myEnum.h"
 #include "myTools.h"
-class RGBShiftEncryp
+#include "ImgBase.h"
+#include <iostream>
+class RGBShiftEncryp :public ImgBase
 {
 public:
 	/**
@@ -13,14 +15,13 @@ public:
 	* @param ik (init key) 需要传入有三个值的数组，分别代表RGB的初始偏移量
 	* @param dk (delta key) 需要传入有三个值的数组，分别代表RGB每次置乱后要增加的偏移量
 	*/
-	RGBShiftEncryp(cv::Mat img, int ck[], int ik[], int dk[]);
-	cv::Mat RGBShiftEnc(myEnum::Color color,int len);
-	cv::Mat RGBShiftDeEnc(myEnum::Color color, int len);
+	RGBShiftEncryp(cv::Mat img, std::vector<int> ck, int ik[], int dk[]);
+	cv::Mat RGBShiftEnc(myEnum::Color color);
+	cv::Mat RGBShiftDeEnc(myEnum::Color color);
+	cv::Mat RGBShiftEnc3C();
+	cv::Mat RGBShiftDeEnc3C();
 private:
-	cv::Mat img;
-	int width;
-	int height;
-	int* ck;
+	std::vector<int> ck;
 	int* ik;
 	int* dk;
 	~RGBShiftEncryp();
