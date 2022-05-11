@@ -10,9 +10,9 @@ using namespace std;
 
 int main() {
 	Mat src = imread("./resource/690x690.jpg");
-	std::vector<int> a = { 1,0,1,1,0,0 };
-	int b[3] = {432, 234, 543 };
-	int c[3] = { 78, 23, 43 };
+	std::vector<int> a = { 1};
+	int b[3] = {100, 100, 100 };
+	int c[3] = { -1, -1, -1 };
 	RGBShiftEncryp* rgb = new RGBShiftEncryp(src,a,b,c);
 	imshow("¼ÓÃÜ1", rgb->RGBShiftEnc3C());
 	imshow("½âÃÜ1", rgb->RGBShiftDeEnc3C());
