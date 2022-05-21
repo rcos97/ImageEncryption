@@ -66,6 +66,7 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\OpenCVAndEigen.props" />
+    <Import Project="Python.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -140,6 +141,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Chaos.cpp" />
+    <ClCompile Include="ChaoSeqEnc.cpp" />
+    <ClCompile Include="Dimension.cpp" />
     <ClCompile Include="ImgBase.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="myEnum.cpp" />
@@ -151,12 +155,17 @@
     <Image Include="resource\690x690.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="draw.py" />
+    <None Include="Henon混沌置乱加密.md" />
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="RGB平移置乱加密.md" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Chaos.h" />
+    <ClInclude Include="ChaoSeqEnc.h" />
+    <ClInclude Include="Dimension.h" />
     <ClInclude Include="ImgBase.h" />
     <ClInclude Include="myEnum.h" />
     <ClInclude Include="myTools.h" />

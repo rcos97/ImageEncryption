@@ -36,6 +36,15 @@
     <ClCompile Include="ImgBase.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Chaos.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Dimension.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ChaoSeqEnc.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="resource\690x690.jpg">
@@ -47,6 +56,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
+    <None Include="Henon混沌置乱加密.md">
+      <Filter>md\chapter1置乱加密</Filter>
+    </None>
+    <None Include="draw.py">
+      <Filter>资源文件</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Text Include="RGB平移置乱加密.md">
@@ -64,6 +79,15 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="ImgBase.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Chaos.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Dimension.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ChaoSeqEnc.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
