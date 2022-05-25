@@ -18,3 +18,8 @@ std::vector<uchar> Dimension::img2OneColor(cv::Mat& m, myEnum::Color c)
 	}
 	return array;
 }
+
+cv::Mat Dimension::vec2ImgMatC1(int w, int h, std::vector<uchar> &imgSeq)
+{
+	return cv::Mat(h, w, CV_8UC1, (void*)imgSeq.data());
+}

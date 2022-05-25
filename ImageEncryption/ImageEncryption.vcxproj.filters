@@ -62,6 +62,7 @@
     <None Include="draw.py">
       <Filter>资源文件</Filter>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="RGB平移置乱加密.md">

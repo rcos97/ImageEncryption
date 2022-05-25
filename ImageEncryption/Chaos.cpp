@@ -1,18 +1,20 @@
 #include "Chaos.h"
 
-vector<double> Chaos::henon(double init , int n)
+vector<mpf_class> Chaos::henon(double initArg , int n)
 {
-    vector <double> result;
-    result.reserve(n);//从n后面开始添加的函数
-    double a = 1.76;
-    double b = 0.1;
-    double x_n = init;
-    double x_n1 = 0;
-    double y_n = 1;
-    double y_n1 = 0;
+    vector <mpf_class> result;
+    result.reserve(n);
+    mpf_class init, a, b, x_n, x_n1, y_n, y_n1;
+    init = initArg;
+    a = 1.4;
+    b = 0.3;
+    x_n = init;
+    x_n1 = 0;
+    y_n = 0;
+    y_n1 = 0;
     result.push_back(x_n);
     for (int i = 1; i < n; i++) {
-        x_n1 = 1 - a * x_n + y_n;
+        x_n1 = 1 - a * x_n * x_n + y_n;
         y_n1 = b * x_n;
         x_n = x_n1;
         y_n = y_n1;
