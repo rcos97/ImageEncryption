@@ -19,6 +19,7 @@ std::vector<uchar> Dimension::img2OneColor(cv::Mat& m, myEnum::Color c)
 	return array;
 }
 
+//vector传参必须传引用，值传递会调用vector的复制构造函数
 cv::Mat Dimension::vec2ImgMatC1(int w, int h, std::vector<uchar> &imgSeq)
 {
 	return cv::Mat(h, w, CV_8UC1, (void*)imgSeq.data());

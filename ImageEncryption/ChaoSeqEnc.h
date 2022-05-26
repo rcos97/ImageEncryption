@@ -10,11 +10,19 @@
 class ChaoSeqEnc:public ImgBase
 {
 private:
-
 public:
+	/**
+	 * @brief 构造函数
+	 * @param m 图片矩阵
+	*/
 	ChaoSeqEnc(cv::Mat m);
+	/**
+	 * @brief 混沌序列进行加密
+	 * @param keySeq 混沌序列
+	*/
+	void encryption(std::vector<mpf_class> keySeq);
 
-	void Enc(std::vector<mpf_class> keySeq);
-
+	
+	void decrypt(std::vector<mpf_class> keySeq);
 };
 
