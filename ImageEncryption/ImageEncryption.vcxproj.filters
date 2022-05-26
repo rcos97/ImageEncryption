@@ -19,6 +19,9 @@
     <Filter Include="md\chapter1置乱加密">
       <UniqueIdentifier>{2af11319-a87a-421a-8659-676b0ff82166}</UniqueIdentifier>
     </Filter>
+    <Filter Include="md\chapter1置乱加密\Henon混沌置乱加密">
+      <UniqueIdentifier>{d1d1bc6a-52a1-4d9a-ac9c-b7f3eb948ca9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -52,6 +55,24 @@
     </Image>
     <Image Include="resource\690X435.jpg">
       <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="Henon混沌置乱加密\image-20220526163331150.png">
+      <Filter>md\chapter1置乱加密\Henon混沌置乱加密</Filter>
+    </Image>
+    <Image Include="Henon混沌置乱加密\image-20220526163444718.png">
+      <Filter>md\chapter1置乱加密\Henon混沌置乱加密</Filter>
+    </Image>
+    <Image Include="Henon混沌置乱加密\image-20220526164328959.png">
+      <Filter>md\chapter1置乱加密\Henon混沌置乱加密</Filter>
+    </Image>
+    <Image Include="Henon混沌置乱加密\image-20220526164717831.png">
+      <Filter>md\chapter1置乱加密\Henon混沌置乱加密</Filter>
+    </Image>
+    <Image Include="Henon混沌置乱加密\image-20220526165221391.png">
+      <Filter>md\chapter1置乱加密\Henon混沌置乱加密</Filter>
+    </Image>
+    <Image Include="Henon混沌置乱加密\image-20220526170028233.png">
+      <Filter>md\chapter1置乱加密\Henon混沌置乱加密</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
@@ -91,5 +112,13 @@
     <ClInclude Include="ChaoSeqEnc.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ImageEncryption.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

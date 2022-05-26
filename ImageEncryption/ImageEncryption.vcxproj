@@ -153,6 +153,12 @@
     <ClCompile Include="RGBShiftEncryp.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Henon混沌置乱加密\image-20220526163331150.png" />
+    <Image Include="Henon混沌置乱加密\image-20220526163444718.png" />
+    <Image Include="Henon混沌置乱加密\image-20220526164328959.png" />
+    <Image Include="Henon混沌置乱加密\image-20220526164717831.png" />
+    <Image Include="Henon混沌置乱加密\image-20220526165221391.png" />
+    <Image Include="Henon混沌置乱加密\image-20220526170028233.png" />
     <Image Include="resource\690X435.jpg" />
     <Image Include="resource\690x690.jpg" />
   </ItemGroup>
@@ -172,7 +178,11 @@
     <ClInclude Include="ImgBase.h" />
     <ClInclude Include="myEnum.h" />
     <ClInclude Include="myTools.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="RGBShiftEncryp.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ImageEncryption.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
